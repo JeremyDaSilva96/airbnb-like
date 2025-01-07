@@ -12,6 +12,13 @@ $color-background: white;
   align-items: center;
 }
 
+@mixin hover-background {
+  &:hover {
+    background-color: #f7f7f7;
+    border-radius: 22px;
+  }
+}
+
 // Header styles
 .header {
   background: $color-background;
@@ -27,6 +34,15 @@ $color-background: white;
   &-left {
     @include flex-center;
   }
+
+  &-center {
+    @include flex-center;
+  }
+
+  &-right {
+    @include flex-center;
+    gap: 8px;
+  }
 }
 
 // Logo styles
@@ -41,10 +57,82 @@ $color-background: white;
     font-family: $headers-font;
     color: $color-primary;
     font-size: 20px;
-    font-weight: 900; 
+    font-weight: 900;
     margin-left: 4px;
   }
 
   width: 32px;
   height: 32px;
+}
+
+// Navigation styles
+.nav-links {
+  @include flex-center;
+  gap: 24px;
+}
+
+.nav-link {
+  color: $color-text;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px;
+  position: relative;
+
+  &:hover {
+    color: $color-text;
+  }
+
+  @include hover-background;
+}
+
+// Host link styles
+.host-link {
+  color: $color-text;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px;
+  @include hover-background;
+}
+
+// Globe button styles
+.globe-btn {
+  @include flex-center;
+  background: none;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  @include hover-background;
+}
+
+.globe-icon {
+  width: 16px;
+  height: 16px;
+}
+
+// Menu button styles
+.menu-button {
+  @include flex-center;
+  gap: 12px;
+  background: none;
+  border: 1px solid $color-border;
+  border-radius: 21px;
+  padding: 5px 5px 5px 12px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  }
+
+  .fa-bars {
+    font-size: 16px;
+    color: $color-text;
+  }
+
+  .fa-circle-user {
+    font-size: 30px;
+    color: $color-text-light;
+  }
 }

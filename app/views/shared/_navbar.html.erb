@@ -6,5 +6,21 @@
         <span class="logo-text">airbnb</span>
       <% end %>
     </div>
+    <div class="header-center">
+      <nav class="nav-links">
+        <%= link_to "Logements", "#", class: "nav-link" %>
+        <%= link_to "Expériences", "#", class: "nav-link" %>
+      </nav>
+    </div>
+    <div class="header-right">
+      <%= link_to "Mettre mon logement sur Airbnb", "#", class: "host-link" %>
+      <button type="button" class="globe-btn">
+        <%= image_tag 'icône_monde.svg', class: 'globe-icon' %>
+      </button>
+      <button type="button" class="menu-button">
+        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-circle-user"></i>
+      </button>
+    </div>
   </div>
 </header>
