@@ -1,4 +1,5 @@
 // Variables
+$headers-font: 'Lato';
 $color-primary: #FF385C;
 $color-text: #222;
 $color-border: #ddd;
@@ -37,9 +38,10 @@ $color-background: white;
   }
 
   &-text {
+    font-family: $headers-font;
     color: $color-primary;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 900; 
     margin-left: 4px;
   }
 

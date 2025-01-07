@@ -1,3 +1,11 @@
+// Define font-face
+@font-face {
+  font-family: 'Airbnb Cereal';
+  src: font-url('AirbnbCerealBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 // Define fonts variables
-$body-font: -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif;
-$headers-font: -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif;
+$body-font: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+$headers-font: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
