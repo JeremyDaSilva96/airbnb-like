@@ -27,20 +27,25 @@ $color-background: white;
   &-top {
     @include flex-center;
     justify-content: space-between;
-    padding: 0 80px;
+    padding: 0 24px;
     height: 80px;
   }
 
   &-left {
     @include flex-center;
+    flex: 1;
   }
 
   &-center {
     @include flex-center;
+    justify-content: center;
+    flex: 2;
   }
 
   &-right {
     @include flex-center;
+    justify-content: flex-end;
+    flex: 1;
     gap: 8px;
   }
 }
@@ -68,7 +73,7 @@ $color-background: white;
 // Navigation styles
 .nav-links {
   @include flex-center;
-  gap: 24px;
+  gap: 32px;
 }
 
 .nav-link {
@@ -76,13 +81,7 @@ $color-background: white;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
-  padding: 10px;
-  position: relative;
-
-  &:hover {
-    color: $color-text;
-  }
-
+  padding: 12px;
   @include hover-background;
 }
 
@@ -134,5 +133,80 @@ $color-background: white;
   .fa-circle-user {
     font-size: 30px;
     color: $color-text-light;
+  }
+}
+
+// Search bar styles
+.search-bar {
+  padding: 0 24px 20px;
+}
+
+.search-form {
+  @include flex-center;
+  max-width: 850px;
+  margin: 0 auto;
+  background: $color-background;
+  border: 1px solid $color-border;
+  border-radius: 40px;
+  padding: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  }
+}
+
+.search-input {
+  flex: 1;
+  padding: 0 24px;
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-text;
+    margin-bottom: 2px;
+  }
+
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: $color-text;
+    background: transparent;
+
+    &::placeholder {
+      color: $color-text-light;
+    }
+  }
+}
+
+.search-divider {
+  width: 1px;
+  height: 32px;
+  background: $color-border;
+}
+
+.search-button {
+  @include flex-center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: $color-primary;
+  color: $color-background;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: darken($color-primary, 5%);
+  }
+
+  i {
+    font-size: 12px;
   }
 }
