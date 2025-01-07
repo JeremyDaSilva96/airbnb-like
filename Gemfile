@@ -34,6 +34,9 @@ gem 'geocoder'
 
 gem 'pg_search'
 
+# SCSS processing
+gem "sassc-rails"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
