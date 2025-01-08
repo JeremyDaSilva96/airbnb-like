@@ -24,29 +24,53 @@
     </div>
   </div>
   <div class="search-bar">
-    <form action="#" class="search-form">
+    <%= simple_form_for :search, url: "#", html: { class: "search-form" } do |f| %>
       <div class="search-input">
-        <label>Destination</label>
-        <input type="text" placeholder="Rechercher une destination">
+        <%= f.input :destination,
+                    label: "Destination",
+                    placeholder: "Rechercher une destination",
+                    wrapper_html: { class: "mb-0" },
+                    input_html: { class: "border-0" } %>
       </div>
       <div class="search-divider"></div>
       <div class="search-input">
-        <label>Arrivée</label>
-        <input type="text" placeholder="Quand ?">
+        <%= f.input :arrival,
+                    label: "Arrivée",
+                    as: :string,
+                    placeholder: "Quand ?",
+                    wrapper_html: { class: "mb-0" },
+                    input_html: { 
+                      class: "border-0",
+                      data: {
+                        controller: "datepicker"
+                      }
+                    } %>
       </div>
       <div class="search-divider"></div>
       <div class="search-input">
-        <label>Départ</label>
-        <input type="text" placeholder="Quand ?">
+        <%= f.input :departure,
+                    label: "Départ",
+                    as: :string,
+                    placeholder: "Quand ?",
+                    wrapper_html: { class: "mb-0" },
+                    input_html: { 
+                      class: "border-0",
+                      data: {
+                        controller: "datepicker"
+                      }
+                    } %>
       </div>
       <div class="search-divider"></div>
       <div class="search-input">
-        <label>Voyageurs</label>
-        <input type="text" placeholder="Ajouter des voyageurs">
+        <%= f.input :guests,
+                    label: "Voyageurs",
+                    placeholder: "Ajouter des voyageurs",
+                    wrapper_html: { class: "mb-0" },
+                    input_html: { class: "border-0" } %>
       </div>
-      <button type="submit" class="search-button">
+      <%= f.button :button, type: :submit, class: "search-button" do %>
         <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
-    </form>
+      <% end %>
+    <% end %>
   </div>
 </header>

@@ -1,0 +1,78 @@
+.search-bar {
+  padding: 16px;
+
+  .search-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .search-input {
+    position: relative;
+    padding: 14px 24px;
+    border-radius: 32px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $gray-light;
+    }
+
+    label {
+      display: block;
+      font-size: $font-sm;
+      font-weight: $font-bold;
+      color: $text-color;
+      margin-bottom: 2px;
+    }
+
+    input {
+      border: none;
+      background: transparent;
+      padding: 0;
+      width: 100%;
+      font-size: $font-base;
+      color: $text-color;
+      font-family: $body-font;
+
+      &::placeholder {
+        color: $gray;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    // Remove Simple Form's default margin
+    .form-group {
+      margin-bottom: 0;
+    }
+  }
+
+  .search-divider {
+    width: 1px;
+    height: 24px;
+    background-color: $border-color;
+  }
+
+  .search-button {
+    background: $primary;
+    color: $white;
+    padding: 16px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: darken($primary, 5%);
+      transform: scale(1.05);
+    }
+
+    i {
+      font-size: $font-lg;
+    }
+  }
+}

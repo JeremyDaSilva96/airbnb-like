@@ -8,4 +8,24 @@ class Property < ApplicationRecord
   validates :address, presence: true
   validates :city, presence: true
   validates :country, presence: true
+
+  # Geocoding configuration
+  geocoded_by :full_address
+  after_validation :geocode, if: :address_changed?
+
+  # Search configuration
+  include PgSearch::Model
+  pg_search_scope :search_by_location_and_attributes,
+    against: [:title, :description, :address, :city, :country, :property_type],
+    using: {
+      tsearch: { prefix: true }
+    }
+
+  def full_address
+    [address, city, country].compact.join(', ')
+  end
+
+  def address_changed?
+    address_changed? || city_changed? || country_changed?
+  end
 end
