@@ -2,7 +2,7 @@
 .properties-grid {
   max-width: 1760px;
   margin: 0 auto;
-  padding: 24px 40px;
+  padding: 0px 40px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
@@ -19,7 +19,7 @@
   color: inherit;
   font-size: 14px;
   width: 100%;
-  
+
   &:hover {
     .property-card__nav {
       opacity: 1;
@@ -64,7 +64,7 @@
     top: 8px;
     left: 8px;
     z-index: 2;
-    
+
     span {
       display: inline-block;
       padding: 4px 8px;
