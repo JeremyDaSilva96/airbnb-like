@@ -2,7 +2,7 @@
 .properties-grid {
   max-width: 1760px;
   margin: 0 auto;
-  padding: 0px 40px;
+  padding: 0px 4rem;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
