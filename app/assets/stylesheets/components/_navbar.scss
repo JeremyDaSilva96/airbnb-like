@@ -1,5 +1,5 @@
 // Variables
-$headers-font: 'Lato';
+$headers-font: 'Poppins';
 $color-primary: #FF385C;
 $color-text: #222;
 $color-border: #ddd;
@@ -27,7 +27,7 @@ $color-background: white;
   &-top {
     @include flex-center;
     justify-content: space-between;
-    padding: 0 24px;
+    padding: 0 40px;
     height: 80px;
   }
 
@@ -39,12 +39,12 @@ $color-background: white;
   &-center {
     @include flex-center;
     justify-content: center;
-    flex: 2;
+    flex: 1;
   }
 
   &-right {
-    @include flex-center;
     justify-content: flex-end;
+    @include flex-center;
     flex: 1;
     gap: 8px;
   }
@@ -60,10 +60,10 @@ $color-background: white;
 
   &-text {
     font-family: $headers-font;
+    font-weight: 600;
+    font-size: 1.5rem;
     color: $color-primary;
-    font-size: 20px;
-    font-weight: 900;
-    margin-left: 4px;
+    margin-left: 6px;
   }
 
   width: 32px;
@@ -72,6 +72,7 @@ $color-background: white;
 
 // Navigation styles
 .nav-links {
+  font-family: $headers-font;
   @include flex-center;
   gap: 32px;
 }
@@ -89,9 +90,11 @@ $color-background: white;
 .host-link {
   color: $color-text;
   text-decoration: none;
+  font-family: $headers-font;
   font-size: 14px;
   font-weight: 500;
-  padding: 12px;
+  padding: 12px 16px;
+  white-space: nowrap;
   @include hover-background;
 }
 
@@ -164,7 +167,8 @@ $color-background: white;
   label {
     display: block;
     font-size: 12px;
-    font-weight: 600;
+    font-family: $headers-font;
+    font-weight: 500;
     color: $color-text;
     margin-bottom: 2px;
   }
@@ -185,15 +189,15 @@ $color-background: white;
 
 .search-divider {
   width: 1px;
-  height: 32px;
+  height: 48px;
   background: $color-border;
 }
 
 .search-button {
   @include flex-center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
   border: none;
   border-radius: 50%;
   background: $color-primary;
