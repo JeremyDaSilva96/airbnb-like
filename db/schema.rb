@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_07_125814) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_08_122548) do
+  create_table "bookings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "property_id", null: false
+    t.date "check_in"
+    t.date "check_out"
+    t.integer "number_of_guests"
+    t.decimal "total_price", precision: 10, scale: 2
+    t.string "status"
+    t.text "special_requests"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_bookings_on_property_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "properties", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -35,4 +50,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_07_125814) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bookings", "properties"
+  add_foreign_key "bookings", "users"
 end
