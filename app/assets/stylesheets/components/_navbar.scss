@@ -27,7 +27,7 @@ $color-background: white;
   &-top {
     @include flex-center;
     justify-content: space-between;
-    padding: 0 40px;
+    padding: 0 4rem;
     height: 80px;
   }
 
@@ -61,13 +61,13 @@ $color-background: white;
   &-text {
     font-family: $headers-font;
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: $color-primary;
     margin-left: 6px;
   }
 
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
 }
 
 // Navigation styles
