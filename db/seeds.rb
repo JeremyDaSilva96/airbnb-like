@@ -1,26 +1,9 @@
-require 'open-uri'
 require 'faker'
 
 puts "Cleaning database..."
 Property.destroy_all
 
 puts "Creating properties..."
-
-# Array of sample image URLs (beautiful properties from Unsplash)
-sample_images = [
-  'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688',
-  'https://images.unsplash.com/photo-1493809842364-78817add7ffb',
-  'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267',
-  'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af',
-  'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6',
-  'https://images.unsplash.com/photo-1512917774080-9991f1c4c750',
-  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9',
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
-  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c',
-  'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3',
-  'https://images.unsplash.com/photo-1600585154526-990dced4db0d',
-  'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde'
-]
 
 # Property types with weighted options
 property_types = [
@@ -52,14 +35,10 @@ property_types = [
     approved: [true, true, true, false].sample # 75% chance of being approved
   )
 
-  # Attach a random image from our sample images
-  begin
-    file = URI.open(sample_images[i]) # Use a different image for each property
-    property.photos.attach(io: file, filename: "property_#{i}.jpg", content_type: "image/jpg")
-    property.save!
+  if property.save
     puts "Created property: #{property.title} in #{property.city}, #{property.country}"
-  rescue => e
-    puts "Failed to create property #{i}: #{e.message}"
+  else
+    puts "Failed to create property #{i}: #{property.errors.full_messages.join(', ')}"
   end
 end
 
