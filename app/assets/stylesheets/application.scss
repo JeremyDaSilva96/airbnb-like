@@ -1,14 +1,31 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- *= require_self
- */
-
 // Configuration
+@import "config/colors";
 @import "config/fonts";
+@import "config/shadows";
 
 // Components
-@import "components/navbar";
-@import "components/property_card";
+@import "components/buttons";
+@import "components/cards";
 @import "components/category_bar";
+@import "components/datepicker";
+@import "components/search_bar";
+
+// layout
+@import "layouts/footer";
+@import "layouts/header";
+
+// General styles
+body {
+  font-family: $body-font;
+  color: $text-color;
+  background-color: $background-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Use the shadow mixin where needed
+.card {
+  @include card-shadow;
+  padding: 1rem;
+  border-radius: 8px;
+}
