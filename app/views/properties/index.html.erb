@@ -1,3 +1,82 @@
+<!-- Category Bar -->
+<div class="category-bar">
+  <%= link_to "#", class: "category-item active" do %>
+    <div class="category-item__icon">
+      <%= image_tag "categories/tiny-house.svg", alt: "Tiny houses" %>
+    </div>
+    <span class="category-item__label">Tiny houses</span>
+  <% end %>
+
+  <%= link_to "#", class: "category-item" do %>
+    <div class="category-item__icon">
+      <%= image_tag "categories/iconic.svg", alt: "Iconiques" %>
+    </div>
+    <span class="category-item__label">Iconiques</span>
+  <% end %>
+
+  <%= link_to "#", class: "category-item" do %>
+    <div class="category-item__icon">
+      <%= image_tag "categories/chateau.svg", alt: "Châteaux" %>
+    </div>
+    <span class="category-item__label">Châteaux</span>
+  <% end %>
+
+  <%= link_to "#", class: "category-item" do %>
+    <div class="category-item__icon">
+      <%= image_tag "categories/ferme.svg", alt: "Fermes" %>
+    </div>
+    <span class="category-item__label">Fermes</span>
+  <% end %>
+
+  <%= link_to "#", class: "category-item" do %>
+    <div class="category-item__icon">
+      <%= image_tag "categories/yourte.svg", alt: "Yourtes" %>
+    </div>
+    <span class="category-item__label">Yourtes</span>
+  <% end %>
+
+  <%= link_to "#", class: "category-item" do %>
+    <div class="category-item__icon">
+      <%= image_tag "categories/wow.svg", alt: "Wow!" %>
+    </div>
+    <span class="category-item__label">Wow!</span>
+  <% end %>
+
+  <%= link_to "#", class: "category-item" do %>
+    <div class="category-item__icon">
+      <%= image_tag "categories/ski.svg", alt: "Au pied des pistes" %>
+    </div>
+    <span class="category-item__label">Au pied des pistes</span>
+  <% end %>
+
+  <%= link_to "#", class: "category-item" do %>
+    <div class="category-item__icon">
+      <%= image_tag "categories/campagne.svg", alt: "Campagne" %>
+    </div>
+    <span class="category-item__label">Campagne</span>
+  <% end %>
+
+  <%= link_to "#", class: "category-item" do %>
+    <div class="category-item__icon">
+      <%= image_tag "categories/cabane.svg", alt: "Cabanes perchées" %>
+    </div>
+    <span class="category-item__label">Cabanes perchées</span>
+  <% end %>
+
+  <%= link_to "#", class: "category-item" do %>
+    <div class="category-item__icon">
+      <%= image_tag "categories/piscine.svg", alt: "Piscines" %>
+    </div>
+    <span class="category-item__label">Piscines</span>
+  <% end %>
+
+  <%= link_to "#", class: "category-item" do %>
+    <div class="category-item__icon">
+      <%= image_tag "categories/grande-demeure.svg", alt: "Grandes demeures" %>
+    </div>
+    <span class="category-item__label">Grandes demeures</span>
+  <% end %>
+</div>
 <div class="properties-grid">
   <% @properties.each do |property| %>
     <%= link_to property_path(property), class: "property-card" do %>
