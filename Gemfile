@@ -26,13 +26,18 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Use Active Storage for file uploads
+gem "image_processing", "~> 1.2"
+
+# Use Cloudinary for image storage
+gem 'cloudinary'
+gem 'dotenv-rails'
+
 gem 'kaminari'
 
 gem 'pg_search'
 
 gem 'geocoder'
-
-gem 'pg_search'
 
 # SCSS processing
 gem "sassc-rails"
@@ -52,16 +57,11 @@ gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-# Image upload and management
-gem 'cloudinary'
-
 # Fake data generation
 gem 'faker'
 
 # Date handling
 gem 'date'
-
-gem "dotenv-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
