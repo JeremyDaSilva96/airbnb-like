@@ -1,77 +1,110 @@
 .search-bar {
-  padding: 16px;
+  // Container styles
+  @include flex-center;
+  max-width: 850px;
+  min-width: 450px;
+  margin: 0 auto 1rem;
+  background: $white;
+  border: 1px solid $gray-light;
+  border-radius: 40px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
 
+  // Form styles
   .search-form {
     display: flex;
     align-items: center;
-    gap: 8px;
+    width: 100%;
   }
 
+  // Base input styles
   .search-input {
-    position: relative;
+    flex: 1;
     padding: 14px 24px;
-    border-radius: 32px;
-    transition: background-color 0.2s;
-    cursor: pointer;
+    position: relative;
 
-    &:hover {
-      background-color: $gray-light;
+    &:not(.guest-input) {
+      border-right: 1px solid rgb(221, 221, 221);
     }
 
+    // Label styles
     label {
       display: block;
-      font-size: $font-sm;
-      font-weight: $font-bold;
-      color: $text-color;
+      font-size: 12px;
+      font-family: $headers-font;
+      font-weight: 500;
+      color: rgb(34, 34, 34);
       margin-bottom: 2px;
+
+      // Hide the required field asterisk
+      abbr[title="required"] {
+        display: none;
+      }
     }
 
+    // Input field styles
     input {
+      width: 100%;
       border: none;
+      outline: none;
+      font-size: 14px;
+      color: rgb(34, 34, 34);
       background: transparent;
       padding: 0;
-      width: 100%;
-      font-size: $font-base;
-      color: $text-color;
-      font-family: $body-font;
-
-      &::placeholder {
-        color: $gray;
-      }
 
       &:focus {
         outline: none;
         box-shadow: none;
       }
+
+      &:focus-visible {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: rgb(113, 113, 113);
+        opacity: 1;
+        font-weight: 400;
+      }
     }
 
-    // Remove Simple Form's default margin
-    .form-group {
-      margin-bottom: 0;
+    // Remove Bootstrap margins
+    .string.required {
+      margin: 0 !important;
     }
   }
 
-  .search-divider {
-    width: 1px;
-    height: 24px;
-    background-color: $gray-light;
+  // Specific input styles
+  .search-input.destination-input {
+    flex: 2.5;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
   }
 
+  .search-input.guest-input {
+    flex: 1.8;
+  }
+
+  // Search button styles
   .search-button {
+    width: 48px;
+    height: 48px;
+    margin: 8px;
+    padding: 0;
     background: $primary;
     color: $white;
-    padding: 16px;
     border-radius: 50%;
-    border: none;
     cursor: pointer;
     transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
-      background-color: darken($primary, 10%);
+      background-color: darken($primary, 5%);
     }
 
     i {
-      font-size: $font-lg;
+      font-size: 16px;
     }
   }
 }

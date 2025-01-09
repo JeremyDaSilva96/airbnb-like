@@ -25,47 +25,44 @@
   </div>
   <div class="search-bar">
     <%= simple_form_for :search, url: "#", html: { class: "search-form" } do |f| %>
-      <div class="search-input">
+      <div class="search-input destination-input">
         <%= f.input :destination,
                     label: "Destination",
                     placeholder: "Rechercher une destination",
                     wrapper_html: { class: "mb-0" },
                     input_html: { class: "border-0" } %>
       </div>
-      <div class="search-divider"></div>
       <div class="search-input">
         <%= f.input :arrival,
                     label: "Arrivée",
                     as: :string,
                     placeholder: "Quand ?",
                     wrapper_html: { class: "mb-0" },
-                    input_html: { 
+                    input_html: {
                       class: "border-0",
                       data: {
                         controller: "datepicker"
                       }
                     } %>
       </div>
-      <div class="search-divider"></div>
       <div class="search-input">
         <%= f.input :departure,
                     label: "Départ",
                     as: :string,
                     placeholder: "Quand ?",
                     wrapper_html: { class: "mb-0" },
-                    input_html: { 
+                    input_html: {
                       class: "border-0",
                       data: {
                         controller: "datepicker"
                       }
                     } %>
       </div>
-      <div class="search-divider"></div>
-      <div class="search-input">
+      <div class="search-input guest-input">
         <%= f.input :guests,
                     label: "Voyageurs",
                     placeholder: "Ajouter des voyageurs",
-                    wrapper_html: { class: "mb-0" },
+                    wrapper_html: { class: "none" },
                     input_html: { class: "border-0" } %>
       </div>
       <%= f.button :button, type: :submit, class: "search-button" do %>
