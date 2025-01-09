@@ -1,10 +1,8 @@
 // Brand Colors
-$primary: #FF5A5F;
-$secondary: #00A699;
-$tertiary: #FC642D;
+$primary: #FF385C;
 
-// Neutral Colors
-$black: #484848;
+// Grayscale Colors
+$black: #000000;
 $gray-dark: #767676;
 $gray: #9B9B9B;
 $gray-light: #DBDBDB;
@@ -12,7 +10,5 @@ $white: #FFFFFF;
 
 // Functional Colors
 $text-color: $black;
+$text-color-light: $gray-dark;
 $border-color: $gray-light;
-$background-color: $white;
-
-

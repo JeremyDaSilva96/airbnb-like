@@ -8,6 +8,7 @@
 @import "components/cards";
 @import "components/category_bar";
 @import "components/datepicker";
+@import "components/navbar";
 @import "components/search_bar";
 
 // layout
@@ -18,7 +19,7 @@
 body {
   font-family: $body-font;
   color: $text-color;
-  background-color: $background-color;
+  background-color: $white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
