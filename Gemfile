@@ -32,7 +32,8 @@ gem "image_processing", "~> 1.2"
 # Use Cloudinary for image storage
 gem 'cloudinary'
 
-gem 'dotenv-rails'
+# Environment variables
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Search functionality
 gem 'pg_search'
