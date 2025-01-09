@@ -1,4 +1,5 @@
 require 'faker'
+require 'open-uri'
 
 puts "Cleaning database..."
 Property.destroy_all
@@ -10,6 +11,9 @@ property_types = [
   'Apartment', 'Apartment', 'House', 'House', 'Villa',
   'Loft', 'Studio', 'Penthouse', 'Cottage', 'Chalet'
 ]
+
+# Temporarily skip geocoding callback
+Property.skip_callback(:validation, :after, :geocode)
 
 # Create 12 random properties
 12.times do |i|
@@ -32,14 +36,26 @@ property_types = [
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
     active: true,
-    approved: [true, true, true, false].sample # 75% chance of being approved
+    approved: true  # Always approved
   )
 
   if property.save
+    # Attach sample images from Unsplash
+    3.times do
+      begin
+        file = URI.open("https://source.unsplash.com/random/1200x800/?#{property.property_type.downcase},interior")
+        property.photos.attach(io: file, filename: "property_#{property.id}_#{rand(1000)}.jpg", content_type: 'image/jpeg')
+      rescue => e
+        puts "Failed to attach image for property #{property.id}: #{e.message}"
+      end
+    end
     puts "Created property: #{property.title} in #{property.city}, #{property.country}"
   else
     puts "Failed to create property #{i}: #{property.errors.full_messages.join(', ')}"
   end
 end
+
+# Re-enable geocoding callback
+Property.set_callback(:validation, :after, :geocode)
 
 puts "Finished! Created #{Property.count} properties"
