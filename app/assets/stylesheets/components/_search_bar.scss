@@ -54,7 +54,7 @@
   .search-divider {
     width: 1px;
     height: 24px;
-    background-color: $border-color;
+    background-color: $gray-light;
   }
 
   .search-button {
@@ -64,11 +64,10 @@
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s;
 
     &:hover {
-      background-color: darken($primary, 5%);
-      transform: scale(1.05);
+      background-color: darken($primary, 10%);
     }
 
     i {
