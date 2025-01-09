@@ -64,10 +64,10 @@
                     placeholder: "Ajouter des voyageurs",
                     wrapper_html: { class: "none" },
                     input_html: { class: "border-0" } %>
+        <%= f.button :button, type: :submit, class: "search-button" do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
       </div>
-      <%= f.button :button, type: :submit, class: "search-button" do %>
-        <i class="fa-solid fa-magnifying-glass"></i>
-      <% end %>
     <% end %>
   </div>
 </header>
