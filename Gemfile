@@ -29,11 +29,14 @@ gem "jbuilder"
 # Use Active Storage for file uploads
 gem "image_processing", "~> 1.2"
 
+# Image handling
+gem 'unsplash'
+
 # Use Cloudinary for image storage
 gem 'cloudinary'
 
 # Environment variables
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails'
 
 # Search functionality
 gem 'pg_search'
