@@ -15,18 +15,3 @@
 @import "layouts/footer";
 @import "layouts/header";
 
-// General styles
-body {
-  font-family: $body-font;
-  color: $text-color;
-  background-color: $white;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-// Use the shadow mixin where needed
-.card {
-  @include card-shadow;
-  padding: 1rem;
-  border-radius: 8px;
-}

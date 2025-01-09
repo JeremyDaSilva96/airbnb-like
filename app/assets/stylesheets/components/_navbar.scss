@@ -20,7 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 4rem;
+    padding: 1rem 2rem;
   }
 
   &-left {
@@ -62,7 +62,6 @@
     font-weight: 600;
     font-size: 1.3rem;
     color: $primary;
-    margin-left: 6px;
   }
 }
 
@@ -153,85 +152,6 @@
   .fa-circle-user {
     font-size: 30px;
     color: $text-color-light;
-  }
-}
-
-// Search bar styles
-.search-bar {
-  @include flex-center;
-  max-width: 850px;
-  margin: 0 auto;
-  background: $white;
-  border: 1px solid $gray-light;
-  border-radius: 40px;
-  padding: 8px;
-
-  &__button {
-    padding: 14px 32px;
-    border-radius: 32px;
-    border: none;
-    background: none;
-    font-size: 14px;
-    font-weight: 500;
-    color: $text-color;
-    cursor: pointer;
-    transition: background-color 0.2s;
-
-    &:hover {
-      background-color: $gray-light;
-    }
-
-    &:not(:last-child) {
-      border-right: 1px solid $gray-light;
-    }
-  }
-
-  &__search {
-    @include flex-center;
-    border: none;
-    border-radius: 50%;
-    background: $primary;
-    color: $white;
-    cursor: pointer;
-    margin-left: 8px;
-    transition: background-color 0.2s;
-
-    &:hover {
-      background-color: darken($primary, 10%);
-    }
-
-    svg {
-      width: 12px;
-      height: 12px;
-      margin: 10px;
-    }
-  }
-
-  &__input {
-    flex: 1;
-    padding: 0 24px;
-
-    label {
-      display: block;
-      font-size: 12px;
-      font-family: $headers-font;
-      font-weight: 500;
-      color: $text-color;
-      margin-bottom: 2px;
-    }
-
-    input {
-      width: 100%;
-      border: none;
-      outline: none;
-      font-size: 14px;
-      color: $text-color;
-      background: transparent;
-
-      &::placeholder {
-        color: $text-color-light;
-      }
-    }
   }
 }
 
