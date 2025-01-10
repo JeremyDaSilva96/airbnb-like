@@ -28,4 +28,8 @@ class Property < ApplicationRecord
   def address_changed?
     address_changed? || city_changed? || country_changed?
   end
+
+  def travelers_favorite?
+    travelers_favorite
+  end
 end

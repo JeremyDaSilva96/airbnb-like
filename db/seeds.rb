@@ -71,7 +71,8 @@ Property.skip_callback(:validation, :after, :geocode)
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
     active: true,
-    approved: true
+    approved: true,
+    travelers_favorite: [true, false].sample
   )
 
   if property.save
