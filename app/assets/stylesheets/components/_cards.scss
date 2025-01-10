@@ -70,14 +70,15 @@
     border: none;
     cursor: pointer;
     padding: 8px;
+    border-radius: 50%;
+    transition: transform 0.2s;
 
     svg {
       width: 24px;
       height: 24px;
-      stroke: $white;
       stroke-width: 2;
-      filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
-      transition: transform 0.2s;
+      filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+      transition: all 0.2s ease;
 
       &:hover {
         transform: scale(1.1);
@@ -85,8 +86,8 @@
     }
 
     &.active svg {
-      fill: $primary;
-      stroke: $primary;
+      fill: #FF385C;
+      stroke: white;
     }
   }
 
