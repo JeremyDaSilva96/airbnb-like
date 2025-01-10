@@ -113,9 +113,11 @@
           <% end %>
 
           <!-- Coup de coeur tag -->
-          <div class="property-card__tag">
-            <span>Coup de cœur voyageurs</span>
-          </div>
+          <% if property.travelers_favorite? %>
+            <div class="property-card__tag">
+              <span>Coup de cœur voyageurs</span>
+            </div>
+          <% end %>
 
           <!-- Favorite Button -->
           <button class="property-card__favorite">
