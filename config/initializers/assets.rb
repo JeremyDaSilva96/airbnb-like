@@ -10,3 +10,5 @@ Rails.application.config.assets.paths << Rails.root.join("app/assets/fonts")
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 Rails.application.config.assets.precompile += %w( .svg .eot .woff .ttf .otf )
+
+Rails.application.config.assets.precompile += %w(bootstrap.min.js popper.js)
