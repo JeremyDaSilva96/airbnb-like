@@ -33,18 +33,18 @@ property_types = [
 
 # Search queries for different property types
 property_queries = [
-  ['modern apartment interior', 'apartment bedroom', 'apartment living room'],
-  ['luxury house exterior', 'modern kitchen', 'master bedroom'],
-  ['cozy living room', 'modern bathroom', 'dining room'],
-  ['modern villa', 'swimming pool', 'luxury interior'],
-  ['penthouse view', 'luxury bedroom', 'modern kitchen'],
-  ['cottage exterior', 'cottage interior', 'cozy bedroom'],
-  ['beach house', 'ocean view', 'modern interior'],
-  ['mountain cabin', 'cabin interior', 'fireplace'],
-  ['modern loft', 'industrial kitchen', 'loft bedroom'],
-  ['luxury apartment', 'city view', 'modern living'],
-  ['studio apartment', 'compact kitchen', 'modern studio'],
-  ['townhouse exterior', 'modern living room', 'contemporary kitchen']
+  ['modern apartment interior', 'apartment bedroom', 'apartment living room', 'apartment kitchen', 'apartment bathroom'],
+  ['luxury house exterior', 'modern kitchen', 'master bedroom', 'house living room', 'house bathroom'],
+  ['cozy living room', 'modern bathroom', 'dining room', 'bedroom design', 'house exterior'],
+  ['modern villa', 'swimming pool', 'luxury interior', 'villa bedroom', 'villa garden'],
+  ['penthouse view', 'luxury bedroom', 'modern kitchen', 'penthouse living', 'city skyline'],
+  ['cottage exterior', 'cottage interior', 'cozy bedroom', 'cottage kitchen', 'cottage garden'],
+  ['beach house', 'ocean view', 'modern interior', 'beach bedroom', 'beachfront'],
+  ['mountain cabin', 'cabin interior', 'fireplace', 'cabin bedroom', 'mountain view'],
+  ['modern loft', 'industrial kitchen', 'loft bedroom', 'loft living', 'loft bathroom'],
+  ['luxury apartment', 'city view', 'modern living', 'designer kitchen', 'master suite'],
+  ['studio apartment', 'compact kitchen', 'modern studio', 'studio living', 'small space design'],
+  ['townhouse exterior', 'modern living room', 'contemporary kitchen', 'townhouse bedroom', 'urban home']
 ]
 
 # Temporarily skip geocoding callback
@@ -77,13 +77,13 @@ Property.skip_callback(:validation, :after, :geocode)
 
   if property.save
     # Fetch and attach images from Unsplash
-    property_queries[i].each do |query|
+    property_queries[i].each_with_index do |query, index|
       begin
-        # Search for a photo
+        # Search for multiple photos and get a random one
         photos = Unsplash::Photo.search(query)
         if photos.any?
-          # Get the first photo's URLs
-          photo = photos.first
+          # Get a random photo from the first 5 results to add variety
+          photo = photos.take(5).sample
           image_url = photo.urls.regular
 
           # Download the image
@@ -92,13 +92,18 @@ Property.skip_callback(:validation, :after, :geocode)
           # Upload to Cloudinary and attach to the property
           property.photos.attach(
             io: downloaded_image,
-            filename: "property_#{property.id}_#{query.parameterize}.jpg",
+            filename: "property_#{property.id}_#{index + 1}_#{query.parameterize}.jpg",
             content_type: 'image/jpeg'
           )
+          
+          puts "  - Added photo #{index + 1}/5: #{query}"
         end
       rescue => e
-        puts "Failed to attach image for property #{property.id}: #{e.message}"
+        puts "Failed to attach image for property #{property.id} (#{query}): #{e.message}"
       end
+      
+      # Add a small delay to avoid hitting rate limits
+      sleep(0.5)
     end
     puts "Created property: #{property.title} in #{property.city}, #{property.country}"
   end

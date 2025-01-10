@@ -7,70 +7,60 @@
       </div>
       <span class="category-item__label">Tiny houses</span>
     <% end %>
-
     <%= link_to "#", class: "category-item" do %>
       <div class="category-item__icon">
         <%= image_tag "categories/iconic.svg", alt: "Iconiques" %>
       </div>
       <span class="category-item__label">Iconiques</span>
     <% end %>
-
     <%= link_to "#", class: "category-item" do %>
       <div class="category-item__icon">
         <%= image_tag "categories/chateau.svg", alt: "Châteaux" %>
       </div>
       <span class="category-item__label">Châteaux</span>
     <% end %>
-
     <%= link_to "#", class: "category-item" do %>
       <div class="category-item__icon">
         <%= image_tag "categories/ferme.svg", alt: "Fermes" %>
       </div>
       <span class="category-item__label">Fermes</span>
     <% end %>
-
     <%= link_to "#", class: "category-item" do %>
       <div class="category-item__icon">
         <%= image_tag "categories/yourte.svg", alt: "Yourtes" %>
       </div>
       <span class="category-item__label">Yourtes</span>
     <% end %>
-
     <%= link_to "#", class: "category-item" do %>
       <div class="category-item__icon">
         <%= image_tag "categories/wow.svg", alt: "Wow!" %>
       </div>
       <span class="category-item__label">Wow!</span>
     <% end %>
-
     <%= link_to "#", class: "category-item" do %>
       <div class="category-item__icon">
         <%= image_tag "categories/ski.svg", alt: "Au pied des pistes" %>
       </div>
       <span class="category-item__label">Au pied des pistes</span>
     <% end %>
-
     <%= link_to "#", class: "category-item" do %>
       <div class="category-item__icon">
         <%= image_tag "categories/campagne.svg", alt: "Campagne" %>
       </div>
       <span class="category-item__label">Campagne</span>
     <% end %>
-
     <%= link_to "#", class: "category-item" do %>
       <div class="category-item__icon">
         <%= image_tag "categories/cabane.svg", alt: "Cabanes perchées" %>
       </div>
       <span class="category-item__label">Cabanes perchées</span>
     <% end %>
-
     <%= link_to "#", class: "category-item" do %>
       <div class="category-item__icon">
         <%= image_tag "categories/piscine.svg", alt: "Piscines" %>
       </div>
       <span class="category-item__label">Piscines</span>
     <% end %>
-
     <%= link_to "#", class: "category-item" do %>
       <div class="category-item__icon">
         <%= image_tag "categories/grande-demeure.svg", alt: "Grandes demeures" %>
@@ -78,7 +68,6 @@
       <span class="category-item__label">Grandes demeures</span>
     <% end %>
   </div>
-
   <div class="category-controls">
     <button class="category-nav-button">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -93,60 +82,80 @@
     </button>
   </div>
 </div>
-
 <div class="properties-grid">
   <% @properties.each do |property| %>
     <%= link_to property_path(property), class: "property-card" do %>
       <div class="property-card__image-container">
-        <!-- Image Carousel -->
-        <div class="property-card__image-wrapper">
-          <% if property.photos.attached? %>
-            <% property.photos.each_with_index do |photo, index| %>
-              <div class="property-card__image <%= 'active' if index == 0 %>">
-                <%= cl_image_tag photo.key %>
+        <!-- Bootstrap Carousel -->
+        <div id="carousel-<%= property.id %>" class="carousel slide property-card__image-wrapper"
+             data-controller="bootstrap"
+             data-bs-ride="false">
+          <div class="carousel-inner">
+            <% if property.photos.attached? %>
+              <% property.photos.each_with_index do |photo, index| %>
+                <div class="carousel-item property-card__image <%= 'active' if index == 0 %>">
+                  <%= cl_image_tag photo.key %>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="carousel-item property-card__image active">
+                <%= image_tag "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688" %>
               </div>
             <% end %>
-          <% else %>
-            <div class="property-card__image active">
-              <%= image_tag "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688" %>
-            </div>
-          <% end %>
-
+          </div>
           <!-- Coup de coeur tag -->
           <% if property.travelers_favorite? %>
             <div class="property-card__tag">
               <span>Coup de cœur voyageurs</span>
             </div>
           <% end %>
-
           <!-- Favorite Button -->
-          <button class="property-card__favorite">
+          <button class="property-card__favorite" onclick="event.preventDefault();">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0, 0, 0, 0.5)" stroke="white">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
             </svg>
           </button>
-
           <!-- Navigation Arrows -->
-          <button class="property-card__nav property-card__nav--prev">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
+          <button class="carousel-control-prev property-card__nav property-card__nav--prev"
+                  type="button"
+                  data-bs-target="#carousel-<%= property.id %>"
+                  data-bs-slide="prev"
+                  onclick="event.preventDefault();">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
           </button>
-          <button class="property-card__nav property-card__nav--next">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
+          <button class="carousel-control-next property-card__nav property-card__nav--next"
+                  type="button"
+                  data-bs-target="#carousel-<%= property.id %>"
+                  data-bs-slide="next"
+                  onclick="event.preventDefault();">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
           </button>
-
-          <!-- Navigation Dots -->
-          <div class="property-card__dots">
-            <% 5.times do |i| %>
-              <button class="property-card__dot <%= 'active' if i == 0 %>"></button>
+          <!-- Navigation Indicators -->
+          <div class="carousel-indicators property-card__dots">
+            <% if property.photos.attached? %>
+              <% property.photos.each_with_index do |_, index| %>
+                <button type="button"
+                        data-bs-target="#carousel-<%= property.id %>"
+                        data-bs-slide-to="<%= index %>"
+                        class="property-card__dot <%= 'active' if index == 0 %>"
+                        onclick="event.preventDefault();"
+                        aria-current="<%= 'true' if index == 0 %>"
+                        aria-label="Slide <%= index + 1 %>"></button>
+              <% end %>
+            <% else %>
+              <button type="button"
+                      data-bs-target="#carousel-<%= property.id %>"
+                      data-bs-slide-to="0"
+                      class="property-card__dot active"
+                      onclick="event.preventDefault();"
+                      aria-current="true"
+                      aria-label="Slide 1"></button>
             <% end %>
           </div>
         </div>
       </div>
-
       <!-- Property Details -->
       <div class="property-card__content">
         <div class="property-card__header">
