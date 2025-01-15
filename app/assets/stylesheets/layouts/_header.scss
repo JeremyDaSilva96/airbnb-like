@@ -1,0 +1,316 @@
+// NAVBAR
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Header styles
+.header {
+  background: $white;
+  border-bottom: 1px solid $gray-light;
+
+  &-top {
+    padding: 1rem 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  &-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+
+  &-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    gap: 8px;
+  }
+}
+
+// Logo styles
+.logo {
+  width: 40px;
+  height: 40px;
+
+  &-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 4px;
+  }
+
+  &-text {
+    font-family: $headers-font;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: $primary;
+  }
+}
+
+// Navigation styles
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  color: rgb(34, 34, 34);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px;
+  border-radius: 22px;
+  transition: color 0.2s;
+
+  &:hover {
+    background-color: rgb(247, 247, 247);
+    color: rgb(34, 34, 34);
+    text-decoration: none;
+  }
+
+  &.active {
+    color: $primary;
+  }
+}
+
+// Host link styles
+.host-link {
+  color: rgb(34, 34, 34);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px;
+  border-radius: 22px;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgb(247, 247, 247);
+    color: rgb(34, 34, 34);
+    text-decoration: none;
+  }
+}
+
+// Globe button styles
+.globe-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 22px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgb(247, 247, 247);
+  }
+}
+
+.globe-icon {
+  width: 16px;
+  height: 16px;
+}
+
+// Menu button styles
+.menu-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: 1px solid $gray-light;
+  border-radius: 21px;
+  padding: 5px 5px 5px 12px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .fa-bars {
+    font-size: 16px;
+    color: $text-color;
+  }
+
+  .fa-circle-user {
+    font-size: 30px;
+    color: $text-color-light;
+  }
+}
+
+// User menu styles
+.user-menu {
+  position: relative;
+
+  &__button {
+    @include flex-center;
+    gap: 8px;
+    padding: 5px 5px 5px 12px;
+    border: 1px solid $gray-light;
+    border-radius: 21px;
+    background: $white;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+
+    &:hover {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: $gray-light;
+    @include flex-center;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      color: $text-color-light;
+    }
+  }
+}
+
+// SEARCHBAR
+.search-bar {
+  @include flex-center;
+  max-width: 850px;
+  min-width: 450px;
+  margin: 0 auto 1rem;
+  background: $white;
+  border: 1px solid $gray-light;
+  border-radius: 40px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-input {
+  flex: 1;
+  padding: 14px 24px;
+  position: relative;
+  transition: background-color 0.2s;
+  border-radius: 40px;
+}
+
+.search-input:hover {
+  background-color: rgb(247, 247, 247);
+}
+
+.search-input:not(.guest-input)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 50%;
+  width: 1px;
+  background-color: rgb(221, 221, 221);
+  transition: opacity 0.2s;
+}
+
+.search-input:not(.guest-input):hover::after {
+  opacity: 0;
+}
+
+.search-input label {
+  display: block;
+  font-size: 12px;
+  font-family: $headers-font;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.search-input label abbr[title="required"] {
+  display: none;
+}
+
+.search-input input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: rgb(34, 34, 34);
+  background: transparent;
+  padding: 0;
+}
+
+.search-input input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.search-input input:focus-visible {
+  outline: none;
+}
+
+.search-input input::placeholder {
+  color: rgb(113, 113, 113);
+  opacity: 1;
+  font-weight: 400;
+}
+
+.search-input .string.required {
+  margin: 0 !important;
+}
+
+.search-input.destination-input {
+  flex: 2.5;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+}
+
+.search-input.guest-input {
+  flex: 1.8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 8px;
+}
+
+.search-button {
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+  background: $primary;
+  color: $white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-left: auto;
+}
+
+.search-button i {
+  font-size: 16px;
+}
