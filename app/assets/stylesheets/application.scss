@@ -1,20 +1,21 @@
+// Components
+@import "components/buttons";
+@import "components/cards";
+@import "components/category_bar";
+@import "components/datepicker";
+
 // Configuration
 @import "config/colors";
 @import "config/fonts";
 @import "config/shadows";
 @import "bootstrap";
 
-// Components
-@import "components/buttons";
-@import "components/cards";
-@import "components/category_bar";
-@import "components/datepicker";
-@import "components/navbar";
-@import "components/search_bar";
-
 // layout
 @import "layouts/footer";
 @import "layouts/header";
+
+// pages
+@import "pages/property_index";
 
 // General styles
 body {
