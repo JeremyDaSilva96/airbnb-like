@@ -87,51 +87,7 @@
     <%= link_to property_path(property), class: "property-card" do %>
       <div class="property-card__image-container">
         <!-- Bootstrap Carousel -->
-        <div id="carousel-<%= property.id %>" class="carousel slide property-card__image-wrapper"
-             data-controller="bootstrap"
-             data-bs-ride="carousel"
-             data-bs-interval="3000"
-             onclick="event.stopPropagation()">
-          <div class="carousel-inner">
-            <% if property.photos.attached? %>
-              <% property.photos.each_with_index do |photo, index| %>
-                <div class="carousel-item property-card__image <%= 'active' if index == 0 %>">
-                  <%= cl_image_tag photo.key, class: "d-block w-100" %>
-                </div>
-              <% end %>
-            <% else %>
-              <div class="carousel-item property-card__image active">
-                <%= image_tag "placeholder.png", class: "d-block w-100" %>
-              </div>
-            <% end %>
-          </div>
-          <!-- Carousel Navigation -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#carousel-<%= property.id %>" data-bs-slide="prev"
-                  onclick="event.preventDefault(); event.stopPropagation();">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carousel-<%= property.id %>" data-bs-slide="next"
-                  onclick="event.preventDefault(); event.stopPropagation();">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-          <!-- Carousel Indicators -->
-          <div class="carousel-indicators">
-            <% if property.photos.attached? %>
-              <% property.photos.each_with_index do |photo, index| %>
-                <button type="button" 
-                        data-bs-target="#carousel-<%= property.id %>" 
-                        data-bs-slide-to="<%= index %>" 
-                        class="<%= 'active' if index == 0 %>"
-                        aria-current="<%= 'true' if index == 0 %>"
-                        aria-label="Slide <%= index + 1 %>"
-                        onclick="event.preventDefault(); event.stopPropagation();">
-                </button>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
+        <%= render partial: "properties/property_card_carousel", locals: { property: property } %>
       </div>
       <!-- Property Details -->
       <div class="property-card__content">
